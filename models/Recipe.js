@@ -63,7 +63,7 @@ RecipeSchema.pre('save', function(next) {
     if (this.isModified('title')) {
       this.slug = slugify(this.title, { lower: true, strict: true });
     }
-    next(); // tells mongoose to continue saving
+    /* next(); // tells mongoose to continue saving */
   });
 
 module.exports = mongoose.model('Recipe', RecipeSchema); // compiles schema into a model for mongo to create a collection

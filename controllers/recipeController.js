@@ -6,7 +6,7 @@ exports.getNewRecipeForm = (req, res) => {
     res.render('recipes/new');
   };
 
-  // pull text fields out of the submitted form data
+/*   // pull text fields out of the submitted form data
 exports.createRecipe = async (req, res) => {
     try {
       const { title, description, category, tags } = req.body;
@@ -27,6 +27,28 @@ exports.createRecipe = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.render('recipes/new', { error: 'Could not create recipe. Please check your inputs.' });
+  }
+}; */
+
+exports.createRecipe = async (req, res) => {
+  try {
+    const { title, description, category, tags } = req.body;
+    const tagsArray = tags ? tags.split(',').map(tag => tag.trim()) : [];
+
+    const recipe = new Recipe({
+      title,
+      description,
+      category,
+      tags: tagsArray,
+      author: req.user._id,
+      image: req.file ? req.file.filename : 'default-recipe.png'
+    });
+
+    await recipe.save();
+    res.redirect(`/recipes/${recipe.slug}`);
+  } catch (err) {
+    console.error(err);
+    res.render('recipes/new', { error: err.message });
   }
 };
 
@@ -117,6 +139,10 @@ exports.getEditRecipeForm = async (req, res) => {
       res.redirect('/recipes');
     } catch (err) {
       console.error(err);
-      res.redirect('/recipes');
+      res.render('recipes/new', { error: err.message });
     }
+/*     } catch (err) {
+      console.error(err);
+      res.redirect('/recipes');
+    } */
   };

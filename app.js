@@ -46,8 +46,10 @@ app.use((req, res, next) => { // this func runs on every request before the rout
 });
 
 // routes 
-app.get('/', (req, res) => res.render('home')); // first route: home.ejs is found, processed, and an HTML is sent back to browser
+app.get('/', (req, res) => res.redirect('/recipes'));
 app.use('/', require('./routes/authRoutes')); //any route defined here is mounted at /routes/..
+app.use('/recipes', require('./routes/recipeRoutes')); // mount routes under /recipe
+app.use('/profile', require('./routes/profileRoutes'));
 
 const PORT = process.env.PORT || 3000; // start server from PORT from .env, otherwise 3000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,0 +1,27 @@
+<!-- header -->
+<%- include('../partials/header') %>
+
+<h1>All Recipes</h1>
+
+<% if (currentUser) { %>
+  <a href="/recipes/new">+ Add New Recipe</a>
+<% } %>
+
+<% if (recipes.length === 0) { %>
+  <p>No recipes yet. Be the first to add one!</p>
+<% } else { %>
+  <div class="recipe-grid">
+    // one card rendered per recipe
+    <% recipes.forEach(recipe => { %>
+      <div class="recipe-card">
+        <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.title %>">
+        <h2><a href="/recipes/<%= recipe.slug %>"><%= recipe.title %></a></h2>
+        <p>Category: <%= recipe.category %></p>
+        <p>By: <a href="/profile/<%= recipe.author.username %>"><%= recipe.author.username %></a></p>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<!-- footer -->
+<%- include('../partials/footer') %>
