@@ -109,12 +109,12 @@ For production, the app connects to MongoDB Atlas via the `MONGO_URI` environmen
 | `PORT` | Port the server runs on (default 3000) |
 | `MONGO_URI` | MongoDB connection string |
 | `SESSION_SECRET` | Secret key for session encryption |
-| `CLOUDINARY_CLOUD_NAME` | Your Cloudinary cloud name |
-| `CLOUDINARY_API_KEY` | Your Cloudinary API key |
-| `CLOUDINARY_API_SECRET` | Your Cloudinary API secret |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
+| `CLOUDINARY_API_KEY` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
 
 ## Team
 
 - Aylin Miranda Antunez
-- Klaudia
+- Klaudia Angula
 - Zenith(Man Cheung Liu) 
