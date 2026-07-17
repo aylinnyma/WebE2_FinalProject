@@ -9,12 +9,12 @@ function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-// create recipe form
+
 exports.getNewRecipeForm = (req, res) => {
     res.render('recipes/new');
   };
 
-// pull text fields out of the submitted form data
+  // create recipe form
 exports.createRecipe = async (req, res) => {
   try {
     const { title, description, category, tags, croppedImage } = req.body;
